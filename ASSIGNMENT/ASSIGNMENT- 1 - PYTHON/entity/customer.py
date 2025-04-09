@@ -1,6 +1,6 @@
 import re  # For email validation
 
-# ✅ FIX: Use a relative import to avoid "ModuleNotFoundError"
+
 try:
     from exceptions.custom_exceptions import InvalidDataException
 except ModuleNotFoundError:
@@ -16,7 +16,7 @@ class Customer:
         self.phone = phone  # Uses setter with validation
         self.address = address  # Uses setter with validation
 
-    # ✅ Getters (Read-Only for Customer ID)
+    #  Getters 
     @property
     def customer_id(self):
         return self.__customer_id
@@ -41,7 +41,7 @@ class Customer:
     def address(self):
         return self.__address
 
-    # ✅ Setters with Validation
+    #  Setters with Validation
     @email.setter
     def email(self, value):
         if not re.match(r"[^@]+@[^@]+\.[^@]+", value):
@@ -60,16 +60,16 @@ class Customer:
             raise InvalidDataException("❌ Address cannot be empty!")
         self.__address = value
 
-    # ✅ Returns Customer's Full Name
+    #  Returns Customer's Full Name
     def get_full_name(self):
         return f"{self.__first_name} {self.__last_name}"
 
-    # ✅ Get Customer Details (For Display)
+    #  Get Customer Details (For Display)
     def get_customer_details(self):
         return (f"Customer {self.__customer_id}: {self.get_full_name()}, "
                 f"Email: {self.__email}, Phone: {self.__phone}, Address: {self.__address}")
 
-    # ✅ Method to Update Customer Info with Proper Validation
+    #  Method to Update Customer Info with Proper Validation
     def update_customer_info(self, email=None, phone=None, address=None):
         if email:
             self.email = email  # Uses setter for validation
@@ -78,7 +78,7 @@ class Customer:
         if address:
             self.address = address  # Uses setter for validation
 
-    # ✅ Convert Object to Dictionary (Useful for Database Operations)
+    #  Convert Object to Dictionary (Useful for Database Operations)
     def to_dict(self):
         return {
             "customer_id": self.__customer_id,
@@ -89,7 +89,7 @@ class Customer:
             "address": self.__address,
         }
 
-    # ✅ Fix: String Representation for Readability
+    #   String Representation for Readability
     def __str__(self):
         """ Returns a readable string representation of the customer """
         return (f"Customer ID: {self.__customer_id}, Full Name: {self.get_full_name()}, "
