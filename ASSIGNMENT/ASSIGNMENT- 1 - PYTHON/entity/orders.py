@@ -1,8 +1,8 @@
 import pyodbc
-from entity.customer import Customer  # ✅ Corrected import
-from entity.products import Product  # ✅ Correct import
-from exceptions import InvalidDataException  # ✅ Custom Exception Handling
-from util.db_connection import Database  # ✅ Database Connection Handler
+from entity.customer import Customer  
+from entity.products import Product  
+from exceptions import InvalidDataException  
+from util.db_connection import Database  
 
 class Order:
     VALID_STATUSES = {"Processing", "Shipped", "Delivered", "Cancelled"}  
@@ -70,7 +70,7 @@ class Order:
         self.__payment_status = value
 
     def add_order_to_db(self):
-        """ ✅ Inserts order into the database and retrieves the generated OrderID """
+        """  Inserts order into the database and retrieves the generated OrderID """
         conn = Database.get_connection()
         cursor = conn.cursor()
 
@@ -87,7 +87,7 @@ class Order:
         return self.__order_id
 
     def add_order_item(self, product, quantity):
-        """ ✅ Adds an item to the order in the OrderDetails table """
+        """  Adds an item to the order in the OrderDetails table """
         if not isinstance(product, Product):
             raise TypeError("❌ product must be an instance of Product!")
         if quantity <= 0:
@@ -112,7 +112,7 @@ class Order:
         conn.close()
 
     def update_order_status(self, new_status):
-        """ ✅ Updates order status in the database """
+        """  Updates order status in the database """
         if new_status not in self.VALID_STATUSES:
             raise InvalidDataException(f"❌ Invalid status! Choose from {self.VALID_STATUSES}")
 
@@ -129,7 +129,7 @@ class Order:
         conn.close()
 
     def remove_order_item(self, product_id):
-        """ ✅ Removes an item from the order in the database """
+        """  Removes an item from the order in the database """
         conn = Database.get_connection()
         cursor = conn.cursor()
 
@@ -147,7 +147,7 @@ class Order:
         conn.close()
 
     def get_order_details(self):
-        """ ✅ Fetches order details from the database """
+        """  Fetches order details from the database """
         conn = Database.get_connection()
         cursor = conn.cursor()
 
