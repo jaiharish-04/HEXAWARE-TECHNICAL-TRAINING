@@ -18,7 +18,7 @@ def main():
         print("5. List Adoption Events")
         print("6. Register for Adoption Event")
         print("7. View Donation Summary")
-        print("8. View Event Registrations")  # New menu option
+        print("8. View Event Registrations")  
         print("9. Exit")
 
         choice = input("Enter your choice: ")
