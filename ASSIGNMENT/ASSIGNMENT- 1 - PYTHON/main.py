@@ -1,21 +1,21 @@
 from dao.customers_dao import CustomersDAO
 from dao.products_dao import ProductsDAO
 from dao.orders_dao import OrdersDAO
-from dao.inventory_dao import InventoryDAO  # ✅ New import
-from datetime import datetime  # ✅ For datetime formatting
+from dao.inventory_dao import InventoryDAO  
+from datetime import datetime  
 
 def main():
     customer_dao = CustomersDAO()
     product_dao = ProductsDAO()
     order_dao = OrdersDAO()
-    inventory_dao = InventoryDAO()  # ✅ New instance
+    inventory_dao = InventoryDAO()  
 
     while True:
         print("\nTechShop System - Main Menu")
         print("1. Customer Management")
         print("2. Product Management")
         print("3. Order Management")
-        print("4. Inventory Management")  # ✅ New Menu Option
+        print("4. Inventory Management")  
         print("5. Exit")
 
         choice = input("Enter choice: ")
@@ -27,7 +27,7 @@ def main():
         elif choice == "3":
             manage_orders(order_dao, customer_dao, product_dao)
         elif choice == "4":
-            manage_inventory(inventory_dao)  # ✅ Call Inventory Management
+            manage_inventory(inventory_dao)  
         elif choice == "5":
             print("Exiting...")
             break
