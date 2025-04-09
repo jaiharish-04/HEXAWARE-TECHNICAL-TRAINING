@@ -10,7 +10,7 @@ class AdoptionEventImpl:
             cursor = self.conn.cursor()
             query = """SELECT EventID, EventName, EventDate, Location 
                        FROM PetPalsSchema.AdoptionEvents 
-                       WHERE EventDate >= GETDATE()"""  # SQL Server syntax for current date
+                       WHERE EventDate >= GETDATE()"""  
             cursor.execute(query)
             events = cursor.fetchall()
 
